@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-
         findViewById<BottomNavigationView>(R.id.bottom)
             .setClickListener(object : IItemClickListener {
                 override fun click(index: Int) {
