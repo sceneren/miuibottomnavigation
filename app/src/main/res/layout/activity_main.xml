@@ -9,8 +9,8 @@
 
 
     <com.hxl.miuibottomnavigation.BottomNavigationView
-        android:layout_alignParentBottom="true"
         android:id="@+id/bottom"
         android:layout_width="match_parent"
-        android:layout_height="70dp"></com.hxl.miuibottomnavigation.BottomNavigationView>
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

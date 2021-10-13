@@ -1,34 +1,22 @@
 package com.hxl.miuibottomnavigation
 
-import android.animation.Animator
-import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.*
-import android.util.AttributeSet
-import android.view.View
-
-import android.graphics.Paint
-
-import android.graphics.Color
-
 import android.graphics.Canvas
-
-import android.graphics.Bitmap
+import android.util.AttributeSet
 import android.view.MotionEvent
-import android.content.res.Configuration
-import android.util.Log
+import android.view.View
 import com.hxl.miuibottomnavigation.build.NavigationBuild
 import com.hxl.miuibottomnavigation.mode.FixedMode
 import com.hxl.miuibottomnavigation.mode.MIUIMode
 import com.hxl.miuibottomnavigation.mode.ScrollMode
-import kotlin.math.*
+import kotlin.math.floor
 
 
 class BottomNavigationView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    var navigationBuild: NavigationBuild = NavigationBuild.Builder(context).build();
+    var navigationBuild: NavigationBuild = NavigationBuild.Builder(context).build()
 
     private var clickListener: IItemClickListener? = null
 
@@ -43,34 +31,33 @@ class BottomNavigationView @JvmOverloads constructor(
         if (navigationBuild.itemList.size == 0) {
             return
         }
-        navigationBuild.mode?.onDraw(canvas);
+        navigationBuild.mode?.onDraw(canvas)
 
     }
 
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
-            var index = floor(event.x / navigationBuild.mode!!.itemWidth);
-            navigationBuild.mode?.clickItem(index.toInt());
-            clickListener?.click(index.toInt());
+            val index = floor(event.x / navigationBuild.mode!!.itemWidth)
+            navigationBuild.mode?.clickItem(index.toInt())
+            clickListener?.click(index.toInt())
         }
         return true
     }
 
 
     fun refresh() {
-        invalidate();
-
+        invalidate()
     }
 
 
     fun setClickListener(callback: IItemClickListener): BottomNavigationView {
-        this.clickListener = callback;
-        return this;
+        this.clickListener = callback
+        return this
     }
 
     fun init(builder: NavigationBuild) {
-        this.navigationBuild = builder;
+        this.navigationBuild = builder
         when (builder.modeValue) {
             Mode.MODE_MIUI.value -> {
                 navigationBuild.mode = MIUIMode(this)

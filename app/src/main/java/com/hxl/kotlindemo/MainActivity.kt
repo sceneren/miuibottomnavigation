@@ -1,21 +1,14 @@
 package com.hxl.kotlindemo
 
-import android.content.Intent
-import android.graphics.Bitmap
+
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
-
-import android.os.Build
-
-
-import android.widget.*
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.hxl.miuibottomnavigation.BottomNavigationView
 import com.hxl.miuibottomnavigation.IItemClickListener
 import com.hxl.miuibottomnavigation.Mode
 import com.hxl.miuibottomnavigation.build.NavigationBuild
+import com.hxl.miuibottomnavigation.extent.dp2Px
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,11 +27,12 @@ class MainActivity : AppCompatActivity() {
             })
             .init(
                 NavigationBuild.Builder(this)
-                    .addItem("首页", R.drawable.ic_home)
-                    .addItem("娱乐", R.drawable.ic_game)
-                    .addItem("我的", R.drawable.ic_me)
-                    .setMode(Mode.MODE_SCROLL)
+                    .addItem("首页", R.drawable.ic_home, R.drawable.ic_home_s)
+                    .addItem("娱乐", R.drawable.ic_game, R.drawable.ic_game_s)
+                    .addItem("我的", R.drawable.ic_me, R.drawable.ic_me_s)
+                    .setMode(Mode.MODE_MIUI)
                     .setSelectTextColor(Color.RED)
+                    .setTextSize(12.dp2Px(this))
                     .setFixedItems(mutableSetOf(1))
                     .build()
             )

@@ -1,5 +1,5 @@
 package com.hxl.miuibottomnavigation
 
 interface IItemClickListener {
-    fun click(index: Int);
+    fun click(index: Int)
 }

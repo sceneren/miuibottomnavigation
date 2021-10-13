@@ -12,8 +12,8 @@ class FixedMode(bottomNavigationView: BottomNavigationView) : BaseMode(bottomNav
         Log.i("TAG", "draw: ${bottomNavigationView.navigationBuild.fixedItems}")
         for (i in bottomNavigationView.navigationBuild.itemList.indices) {
             if (bottomNavigationView.navigationBuild.fixedItems.contains(i)) {
-                var itemRect = getItemRect(i)
-                var path = Path()
+                val itemRect = getItemRect(i)
+                val path = Path()
                 path.moveTo(itemRect.mid - circleSize, bodyMarginTop)
                 path.quadTo(
                     itemRect.mid.toFloat(),
@@ -23,13 +23,18 @@ class FixedMode(bottomNavigationView: BottomNavigationView) : BaseMode(bottomNav
                 )
                 canvas.drawPath(path, Paint().apply { color = Color.WHITE })
             }
-            drawIcon(bottomNavigationView.navigationBuild.itemList[i].icon, i, canvas);
+            drawIcon(
+                bottomNavigationView.navigationBuild.itemList[i].defIcon,
+                bottomNavigationView.navigationBuild.itemList[i].selectIcon,
+                i,
+                canvas
+            )
             drawText(bottomNavigationView.navigationBuild.itemList[i].title, i, canvas)
         }
     }
 
     override fun handlerClick(index: Int) {
-        currentIndex = index;
+        currentIndex = index
         bottomNavigationView.invalidate()
     }
 
