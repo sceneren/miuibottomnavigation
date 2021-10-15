@@ -37,7 +37,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.hxl'
+                groupId = 'com.github.sceneren'
                 artifactId = 'miuibottomnavigation'
                 version = '0.0.5'
             }
